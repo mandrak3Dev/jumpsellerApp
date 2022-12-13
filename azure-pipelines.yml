@@ -7,3 +7,5 @@ resources:
       ref: main
 extends:
   template: pipeline/micro-fe/main.yaml@templates
+  parameters:
+    isMicroFront: false
