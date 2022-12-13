@@ -1,4 +1,6 @@
 general:
   responsable: eoportu
   hdus:
-    - DIG-0
+    - ECFEB-80
+pagerduty:
+  scalation-policy: Community-Scalation
