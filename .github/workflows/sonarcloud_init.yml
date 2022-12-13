@@ -1,0 +1,29 @@
+name: Init
+on:
+  push:
+    branches:
+      - main
+jobs:        
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          
+      - name: Create Project
+        run:  curl -X POST -u '${{ secrets.SONAR_TOKEN }}:' 'https://sonarcloud.io/api/projects/create' -d 'name=${{ github.event.repository.name }}' -d 'project=BCI-Ecosistemas-Digitales_${{ github.event.repository.name }}' -d 'organization=bci-ecosistemas-digitales' -d 'visibility=private'
+      
+      - name: Rename Default Branch
+        run:  curl -X POST -u '${{ secrets.SONAR_TOKEN }}:' 'https://sonarcloud.io/api/project_branches/rename' -d 'name=main' -d 'project=BCI-Ecosistemas-Digitales_${{ github.event.repository.name }}'
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          args: >
+            -Dsonar.organization=bci-ecosistemas-digitales
+            -Dsonar.projectKey=BCI-Ecosistemas-Digitales_${{ github.event.repository.name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
