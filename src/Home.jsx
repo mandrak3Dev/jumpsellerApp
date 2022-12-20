@@ -8,9 +8,9 @@ const Home = () => {
 
   React.useEffect(() => {
     const httpCall = async () => {
-      const client_id = "zS_58sDUDBeJMf1WLZIa8xa8gMj56zdZAeIpC5oYsB0";
-      const client_secret = "JQzByA2MZQsbToeA39tn2-jmnJc-kPNB71moLBjsd1g";
-      const redirect_uri = "https://cerulean-salamander-59d321.netlify.app/";
+      const client_id = procces.env.CLIENT_ID;
+      const client_secret = procces.env.CLIENT_SECRET;
+      const redirect_uri = procces.env.REDIRECT_URI;
       const code = searchParams.get("code");
       const grant_type = "authorization_code";
       const authUrl = "https://accounts.jumpseller.com/oauth/token";
