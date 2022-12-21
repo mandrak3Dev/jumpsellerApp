@@ -21,7 +21,8 @@ export const Home = () => {
           code,
           grant_type,
         });
-        sessionStorage.setItem("accesToken", codeRequest.data.acces_token);
+        const accesToken = codeRequest.data.acces_token;
+        console.log(accesToken);
       } catch (error) {
         console.log(error);
       }
