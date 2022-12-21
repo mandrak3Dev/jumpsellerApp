@@ -21,7 +21,7 @@ export const Home = () => {
           code,
           grant_type,
         });
-        localStorage.setItem("tokenData", JSON.stringify(codeRequest.data));
+        sessionStorage.setItem("accesToken", codeRequest.data.acces_token);
       } catch (error) {
         console.log(error);
       }
