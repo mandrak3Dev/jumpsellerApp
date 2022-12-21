@@ -21,8 +21,7 @@ export const Home = () => {
           code,
           grant_type,
         });
-        const data = response.data.acces_token;
-        console.log(data);
+        localStorage.setItem("rqt", response.data.acces_token);
       } catch (error) {
         console.log(error);
       }
