@@ -14,15 +14,15 @@ export const Home = () => {
       const authUrl = "https://accounts.jumpseller.com/oauth/token";
 
       try {
-        const codeRequest = await axios.post(authUrl, {
+        const response = await axios.post(authUrl, {
           client_id,
           client_secret,
           redirect_uri,
           code,
           grant_type,
         });
-        const accesToken = codeRequest.data.acces_token;
-        console.log(accesToken);
+        const data = response.data.acces_token;
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
