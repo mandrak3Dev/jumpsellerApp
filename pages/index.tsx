@@ -20,7 +20,7 @@ export const Home = () => {
         code,
         grant_type,
       });
-      const tokenData = await response.data;
+      const tokenData = await response.data.access_token;
       await insertPlugin(tokenData);
     } catch (error) {
       console.log(error);
