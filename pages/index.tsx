@@ -1,5 +1,3 @@
-// import Head from "next/head";
-// import styles from "../styles/Home.module.css";
 import { useEffect } from "react";
 import axios from "axios";
 
@@ -21,7 +19,7 @@ export const Home = () => {
         grant_type,
       });
       const tokenData = await response.data.access_token;
-      await insertPlugin(tokenData);
+      await insertPlugin("tokenData");
     } catch (error) {
       console.log(error);
     }
@@ -53,8 +51,10 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Hello world!</h1>
+    <div className="container">
+      <img src="../assets/cruz_central.png" alt="" />
+      <h1>¡Tu aplicación fue instalada de forma exitosa!</h1>
+      <img src="../assets/bciplus.png" alt="" />
     </div>
   );
 };
